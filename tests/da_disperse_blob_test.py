@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from tests.da_test_framework import TestFramework
+from tests.test_framework.da_test_framework import TestFramework
 
 class DADisperseBlobTest(TestFramework):
     def setup_params(self):
