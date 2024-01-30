@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from test_framework.test_framework import TestFramework
+from tests.da_test_framework import TestFramework
 
 class DAGetBlobStatusTest(TestFramework):
     def setup_params(self):
