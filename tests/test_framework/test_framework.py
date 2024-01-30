@@ -198,7 +198,7 @@ class TestFramework:
                 "ZGS",
                 default=os.path.join(
                     __file_path__,
-                    "../../zerog-storage-rust/target/release/zgs_node"
+                    "../../zerog-storage-kv/zerog-storage-rust/target/release/zgs_node"
                     + (".exe" if is_windows_platform() else ""),
                 ),
             ),
@@ -210,7 +210,7 @@ class TestFramework:
             dest="cli",
             default=os.path.join(
                 __file_path__,
-                "../../zerog-storage-rust/target/zgs-client"
+                "../../zerog-storage-kv/zerog-storage-rust/target/zgs-client"
                 + (".exe" if is_windows_platform() else ""),
             ),
             type=str,
@@ -221,7 +221,7 @@ class TestFramework:
             dest="zgs_kv",
             default=os.path.join(
                 __file_path__,
-                "../../target/release/zgs_kv"
+                "../../zerog-storage-kv/target/release/zgs_kv"
                 + (".exe" if is_windows_platform() else ""),
             ),
             type=str,
@@ -232,7 +232,7 @@ class TestFramework:
             dest="contract",
             default=os.path.join(
                 __file_path__,
-                "../../zerog-storage-rust/zerog-storage-contracts/artifacts/contracts/dataFlow/Flow.sol/Flow.json",
+                "../../zerog-storage-kv/zerog-storage-rust/zerog-storage-contracts/artifacts/contracts/dataFlow/Flow.sol/Flow.json",
             ),
             type=str,
         )
@@ -252,7 +252,7 @@ class TestFramework:
             dest="mine_contract",
             default=os.path.join(
                 __file_path__,
-                "../../zerog-storage-rust/zerog-storage-contracts/artifacts/contracts/test/PoraMineTest.sol/PoraMineTest.json",
+                "../../zerog-storage-kv/zerog-storage-rust/zerog-storage-contracts/artifacts/contracts/test/PoraMineTest.sol/PoraMineTest.json",
             ),
             type=str,
         )
