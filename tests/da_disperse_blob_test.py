@@ -7,7 +7,6 @@ class DADisperseBlobTest(TestFramework):
         self.num_nodes = 2
 
     def run_test(self):
-        self.setup_da_node()
         # tx_seq and data mapping
         self.next_tx_seq = 0
         self.data = {}

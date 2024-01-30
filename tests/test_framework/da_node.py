@@ -1,8 +1,8 @@
 import os
 
-from test_framework.blockchain_node import NodeType, TestNode
-from utility.utils import blockchain_rpc_port
-from config.node_config import GENESIS_PRIV_KEY
+from zerog-storage-kv.tests.test_framework.blockchain_node import NodeType, TestNode
+from zerog-storage-kv.tests.utility.utils import blockchain_rpc_port
+from zerog-storage-kv.tests.config.node_config import GENESIS_PRIV_KEY
 
 class LocalStack(TestNode):
     def __init__(
