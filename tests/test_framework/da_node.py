@@ -1,10 +1,11 @@
 import os
+import utils
 from enum import unique
 
-from ..zerog_storage_kv.tests.test_framework.blockchain_node import TestNode
-from ..zerog_storage_kv.tests.utility.utils import blockchain_rpc_port
-from ..zerog_storage_kv.tests.config.node_config import GENESIS_PRIV_KEY
-from ..zerog_storage_kv.tests.test_framework.blockchain_node import NodeType as ParentNodeType
+from zerog_storage_kv.tests.test_framework.blockchain_node import TestNode
+from zerog_storage_kv.tests.utility.utils import blockchain_rpc_port
+from zerog_storage_kv.tests.config.node_config import GENESIS_PRIV_KEY
+from zerog_storage_kv.tests.test_framework.blockchain_node import NodeType as ParentNodeType
 
 @unique
 class NodeType(ParentNodeType):
