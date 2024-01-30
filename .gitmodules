@@ -15,4 +15,4 @@
 	url = https://github.com/Layr-Labs/eigenlayer-middleware
 [submodule "zerog-storage-kv"]
 	path = zerog-storage-kv
-	url = git@github_conflux:zero-gravity-labs/zerog-storage-kv.git
+	url = git@github.com:zero-gravity-labs/zerog-storage-kv.git

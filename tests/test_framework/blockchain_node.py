@@ -282,7 +282,7 @@ class BlockchainNode(TestNode):
         self.log.debug("Flow deployed")
         mine_contract, _ = deploy_contract(
             self.mine_contract_path,
-            [flow_contract.address, NO_SEAL_FLAG],
+            [flow_contract.address, token_contract.address, 7],
         )
         self.log.debug("Mine deployed")
         self.log.info("All contracts deployed")
