@@ -1,5 +1,3 @@
-import utils
-
 from zerog_storage_kv.tests.test_framework.test_framework import TestFramework as ParentTestFramework
 from zerog_storage_kv.tests.utility.kv import MAX_STREAM_ID, to_stream_id
 from da_node import LocalStack, DAEncoder, DABatcher, DAServer

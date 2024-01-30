@@ -1,5 +1,4 @@
 import os
-import utils
 from enum import unique
 
 from zerog_storage_kv.tests.test_framework.blockchain_node import TestNode
