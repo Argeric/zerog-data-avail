@@ -1,8 +1,17 @@
 import os
+from enum import unique
 
-from zerog-storage-kv.tests.test_framework.blockchain_node import NodeType, TestNode
+from zerog-storage-kv.tests.test_framework.blockchain_node import TestNode
 from zerog-storage-kv.tests.utility.utils import blockchain_rpc_port
 from zerog-storage-kv.tests.config.node_config import GENESIS_PRIV_KEY
+from zerog-storage-kv.tests.test_framework.blockchain_node import NodeType as ParentNodeType
+
+@unique
+class NodeType(ParentNodeType):
+    DA_LOCAL_STACK = 3
+    DA_ENCODER = 4
+    DA_BATCHER = 5
+    DA_SERVER = 6
 
 class LocalStack(TestNode):
     def __init__(
