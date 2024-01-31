@@ -15,12 +15,13 @@ PORT_RANGE = 600
 __file_path__ = os.path.dirname(os.path.realpath(__file__))
 
 def run():
-    dir_name = os.path.join(__file_path__, "zerog_storage_kv", "tests", "tmp")
+    dir_name = os.path.join(__file_path__, "..", "zerog_storage_kv", "tests", "tmp")
     if not os.path.exists(dir_name):
         os.makedirs(dir_name, exist_ok=True)
 
     conflux_path = os.path.join(dir_name, "conflux")
-    #/mnt/zerog-data-avail/tests/zerog_storage_kv/tests/tmp/conflux
+    #val /mnt/zerog-data-avail/tests/zerog_storage_kv/tests/tmp/conflux
+    #exp /mnt/zerog-data-avail/zerog_storage_kv/tests/tmp/conflux
     print("conflux_path==111========================"+conflux_path)
     if not os.path.exists(conflux_path):
         build_conflux(conflux_path)
