@@ -18,6 +18,7 @@ def run():
         os.makedirs(dir_name, exist_ok=True)
 
     conflux_path = os.path.join(dir_name, "conflux")
+    print("conflux_path==111========================"+conflux_path)
     if not os.path.exists(conflux_path):
         build_conflux(conflux_path)
 
