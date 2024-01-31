@@ -12,6 +12,8 @@ PORT_MIN = 11000
 PORT_MAX = 65535
 PORT_RANGE = 600
 
+__file_path__ = os.path.dirname(os.path.realpath(__file__))
+
 def run():
     dir_name = os.path.join(__file_path__, "tmp")
     if not os.path.exists(dir_name):
