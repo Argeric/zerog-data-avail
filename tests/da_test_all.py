@@ -2,7 +2,7 @@
 import sys
 sys.path.append("./zerog_storage_kv/tests")
 
-from da_test_all import run
+from test_all import run
 
 if __name__ == "__main__":
     run()
