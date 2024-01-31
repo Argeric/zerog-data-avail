@@ -15,7 +15,7 @@ PORT_RANGE = 600
 __file_path__ = os.path.dirname(os.path.realpath(__file__))
 
 def run():
-    dir_name = os.path.join(__file_path__, "tmp")
+    dir_name = os.path.join(__file_path__, "zerog_storage_kv", "tests", "tmp")
     if not os.path.exists(dir_name):
         os.makedirs(dir_name, exist_ok=True)
 
