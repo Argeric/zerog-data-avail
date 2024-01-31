@@ -1,6 +1,6 @@
 import os
 import sys
-sys.path.append("../zerog_storage_kv/tests")
+sys.path.append("../../zerog_storage_kv/tests")
 
 from enum import Enum, unique
 

@@ -1,5 +1,5 @@
 import sys
-sys.path.append("../zerog_storage_kv/tests")
+sys.path.append("../../zerog_storage_kv/tests")
 
 from test_framework.test_framework import TestFramework
 from utility.kv import MAX_STREAM_ID, to_stream_id
