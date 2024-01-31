@@ -4,12 +4,12 @@ sys.path.append("../zerog_storage_kv/tests")
 
 from enum import Enum, unique
 
-from test_framework.blockchain_node import TestNode, NodeType
+from test_framework.blockchain_node import TestNode
 from utility.utils import blockchain_rpc_port
 from config.node_config import GENESIS_PRIV_KEY
 
 @unique
-class DANodeType(NodeType, Enum):
+class DANodeType(Enum):
     DA_LOCAL_STACK = 3
     DA_ENCODER = 4
     DA_BATCHER = 5
