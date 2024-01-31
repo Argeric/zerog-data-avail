@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+import sys
+sys.path.append("./zerog_storage_kv/tests")
+
 from da_test_framework.da_test_framework import DATestFramework
 
 class DADisperseBlobTest(DATestFramework):
