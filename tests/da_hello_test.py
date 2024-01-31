@@ -4,7 +4,7 @@ sys.path.append("../zerog_storage_kv/tests")
 
 from da_test_framework.da_test_framework import DATestFramework
 
-class DADisperseBlobTest(DATestFramework):
+class DAHelloTest(DATestFramework):
     def setup_params(self):
         self.num_blockchain_nodes = 1
         self.num_nodes = 2
@@ -21,14 +21,8 @@ class DADisperseBlobTest(DATestFramework):
 
 
     def run_test(self):
-        # tx_seq and data mapping
-        self.next_tx_seq = 0
-        self.data = {}
-        self.disperse_blob_status_test()
-
-    def get_blob_status_test(self):
-        print("disperse_blob_status_test")
+        print("hello")
 
 if __name__ == "__main__":
-    DADisperseBlobTest(blockchain_node_configs=dict(
+    DAHelloTest(blockchain_node_configs=dict(
         [(0, dict(mode="dev", dev_block_interval_ms=50))])).main()
