@@ -13,6 +13,6 @@
 [submodule "contracts/lib/eigenlayer-middleware"]
 	path = contracts/lib/eigenlayer-middleware
 	url = https://github.com/Layr-Labs/eigenlayer-middleware
-[submodule "tests/test_framework/zerog_storage_kv"]
-	path = tests/test_framework/zerog_storage_kv
+[submodule "tests/zerog_storage_kv"]
+	path = tests/zerog_storage_kv
 	url = git@github_conflux:zero-gravity-labs/zerog-storage-kv.git

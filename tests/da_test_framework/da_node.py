@@ -1,13 +1,15 @@
 import os
+import sys
+sys.path.append("../zerog_storage_kv/tests")
+
 from enum import unique
 
-from zerog_storage_kv.tests.test_framework.blockchain_node import TestNode
-from zerog_storage_kv.tests.utility.utils import blockchain_rpc_port
-from zerog_storage_kv.tests.config.node_config import GENESIS_PRIV_KEY
-from zerog_storage_kv.tests.test_framework.blockchain_node import NodeType as ParentNodeType
+from test_framework.blockchain_node import TestNode, NodeType
+from utility.utils import blockchain_rpc_port
+from config.node_config import GENESIS_PRIV_KEY
 
 @unique
-class NodeType(ParentNodeType):
+class DANodeType(NodeType):
     DA_LOCAL_STACK = 3
     DA_ENCODER = 4
     DA_BATCHER = 5
@@ -26,7 +28,7 @@ class LocalStack(TestNode):
         local_conf.update(updated_config)
         data_dir = os.path.join(root_dir, "local_stack")
         super().__init__(
-            NodeType.DA_LOCAL_STACK,
+            DANodeType.DA_LOCAL_STACK,
             0,
             data_dir,
             None,
@@ -54,7 +56,7 @@ class DAEncoder(TestNode):
         local_conf.update(updated_config)
         data_dir = os.path.join(root_dir, "da_encoder")
         super().__init__(
-            NodeType.DA_ENCODER,
+            DANodeType.DA_ENCODER,
             0,
             data_dir,
             None,
@@ -96,7 +98,7 @@ class DABatcher(TestNode):
         local_conf.update(updated_config)
         data_dir = os.path.join(root_dir, "da_batcher")
         super().__init__(
-            NodeType.DA_BATCHER,
+            DANodeType.DA_BATCHER,
             0,
             data_dir,
             None,
@@ -145,7 +147,7 @@ class DAServer(TestNode):
         local_conf.update(updated_config)
         data_dir = os.path.join(root_dir, "da_server")
         super().__init__(
-            NodeType.DA_SERVER,
+            DANodeType.DA_SERVER,
             0,
             data_dir,
             None,

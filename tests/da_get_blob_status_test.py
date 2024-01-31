@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-from test_framework.test_framework import TestFramework
+from da_test_framework.da_test_framework import DATestFramework
 
-class DAGetBlobStatusTest(TestFramework):
+class DAGetBlobStatusTest(DATestFramework):
     def setup_params(self):
         self.num_blockchain_nodes = 1
         self.num_nodes = 2

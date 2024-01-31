@@ -1,8 +1,11 @@
-from zerog_storage_kv.tests.test_framework.test_framework import TestFramework as ParentTestFramework
-from zerog_storage_kv.tests.utility.kv import MAX_STREAM_ID, to_stream_id
+import sys
+sys.path.append("../zerog_storage_kv/tests")
+
+from test_framework.test_framework import TestFramework
+from utility.kv import MAX_STREAM_ID, to_stream_id
 from da_node import LocalStack, DAEncoder, DABatcher, DAServer
 
-class TestFramework(ParentTestFramework):
+class DATestFramework(TestFramework):
 
     def setup_nodes(self):
         super.setup_nodes()
