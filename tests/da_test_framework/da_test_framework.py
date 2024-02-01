@@ -20,6 +20,11 @@ class DATestFramework(TestFramework):
             blockchain_node_type=BlockChainNodeType.Conflux,
             blockchain_node_configs={},
     ):
+        self.da_server_binary = None
+        self.da_batcher_binary = None
+        self.da_encoder_binary = None
+        self.localstack_binary = None
+        self.stream_ids = None
         binary_ext = ".exe" if is_windows_platform() else ""
         tests_dir = os.path.dirname(__file_path__)
         self.__default_localstack_binary__ = os.path.join(
@@ -50,27 +55,27 @@ class DATestFramework(TestFramework):
             service.stop()
 
     def setup_da_node(self, updated_config={}):
-        local_stack = LocalStack(self.root_dir, updated_config, self.log)
+        local_stack = LocalStack(self.root_dir, self.localstack_binary, updated_config, self.log)
         self.da_services.append(local_stack)
         local_stack.setup_config()
         local_stack.start()
 
-        da_encoder = DAEncoder(self.root_dir, updated_config, self.log)
+        da_encoder = DAEncoder(self.root_dir, self.da_encoder_binary, updated_config, self.log)
         self.da_services.append(da_encoder)
         da_encoder.setup_config()
         da_encoder.start()
 
-        da_batcher = DABatcher(self.root_dir, updated_config, self.contract.address(), self.log)
+        da_batcher = DABatcher(self.root_dir, self.da_batcher_binary, updated_config, self.contract.address(), self.log)
         self.da_services.append(da_batcher)
         da_batcher.setup_config()
         da_batcher.start()
 
-        da_server = DAServer(self.root_dir, updated_config, self.log)
+        da_server = DAServer(self.root_dir, self.da_server_binary, updated_config, self.log)
         self.da_services.append(da_server)
         da_server.setup_config()
         da_server.start()
 
-    def __parse_arguments(self):
+    def __da_parse_arguments(self):
         parser = argparse.ArgumentParser(usage="%(prog)s [options]")
 
         parser.add_argument(
@@ -101,10 +106,25 @@ class DATestFramework(TestFramework):
             type=str,
         )
 
-        da_options = parser.parse_args()
-        var_type = type(da_options)
-        print("da_options =================================== " + str(da_options) + "   " + str(var_type))
+        self.da_options = parser.parse_args()
+        print("da_options =================================== " + str(self.da_options))
 
     def main(self):
-        self.__parse_arguments()
+        self.__da_parse_arguments()
+        self.localstack_binary = self.da_options.localstack
+        self.da_encoder_binary = self.da_options.da_encoder
+        self.da_batcher_binary = self.da_options.da_batcher
+        self.da_server_binary = self.da_options.da_server
+        assert os.path.exists(self.localstack_binary), (
+                "localstack binary not found: %s" % self.localstack_binary
+        )
+        assert os.path.exists(self.da_encoder_binary), (
+                "da encoder binary not found: %s" % self.da_encoder_binary
+        )
+        assert os.path.exists(self.da_batcher_binary), (
+                "da batcher binary not found: %s" % self.da_batcher_binary
+        )
+        assert os.path.exists(self.da_server_binary), (
+                "da server binary not found: %s" % self.da_server_binary
+        )
         super().main()
