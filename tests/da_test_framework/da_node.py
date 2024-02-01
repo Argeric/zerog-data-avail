@@ -27,7 +27,7 @@ class LocalStack(TestNode):
 
         # Overwrite with personalized configs.
         local_conf.update(updated_config)
-        data_dir = os.path.join(root_dir, "local_stack")
+        data_dir = os.path.join(root_dir, "localstack")
         super().__init__(
             DANodeType.DA_LOCAL_STACK,
             0,
@@ -41,7 +41,7 @@ class LocalStack(TestNode):
         self.args = [binary, "-localstack-port 4566 -deploy-resources true localstack"]
 
     def start(self):
-        self.log.info("Start local stack")
+        self.log.info("Start localstack")
         super().start()
 
 class DAEncoder(TestNode):
@@ -78,7 +78,7 @@ class DAEncoder(TestNode):
         --disperser-encoder.log.level-file trace"]
 
     def start(self):
-        self.log.info("Start da encoder")
+        self.log.info("Start DA encoder")
         super().start()
 
 class DABatcher(TestNode):
@@ -132,7 +132,7 @@ class DABatcher(TestNode):
         --batcher.storage.flow-contract	{local_conf['log_contract_address']}"]
 
     def start(self):
-        self.log.info("Start da batcher")
+        self.log.info("Start DA batcher")
         super().start()
 
 class DAServer(TestNode):
@@ -167,5 +167,5 @@ class DAServer(TestNode):
         --disperser-server.aws.endpoint-url http://0.0.0.0:4566"]
 
     def start(self):
-        self.log.info("Start da server")
+        self.log.info("Start DA server")
         super().start()

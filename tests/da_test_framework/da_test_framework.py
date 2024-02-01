@@ -66,25 +66,21 @@ class DATestFramework(TestFramework):
         self.da_services.append(local_stack)
         local_stack.setup_config()
         local_stack.start()
-        self.log.info("Localstack started")
 
         da_encoder = DAEncoder(self.root_dir, self.da_encoder_binary, updated_config, self.log)
         self.da_services.append(da_encoder)
         da_encoder.setup_config()
         da_encoder.start()
-        self.log.info("DA encoder started")
 
         da_batcher = DABatcher(self.root_dir, self.da_batcher_binary, updated_config, self.contract.address(), self.log)
         self.da_services.append(da_batcher)
         da_batcher.setup_config()
         da_batcher.start()
-        self.log.info("DA batcher started")
 
         da_server = DAServer(self.root_dir, self.da_server_binary, updated_config, self.log)
         self.da_services.append(da_server)
         da_server.setup_config()
         da_server.start()
-        self.log.info("DA server started")
         self.log.info("All DA service started")
 
     def __da_parse_arguments(self):
