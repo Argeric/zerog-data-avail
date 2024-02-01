@@ -114,6 +114,10 @@ class DATestFramework(TestFramework):
             type=str,
         )
 
+        parser.add_argument("--randomseed", dest="random_seed", type=int, help="Set a random seed")
+
+        parser.add_argument("--port-min", dest="port_min", default=11000, type=int)
+
         self.da_options = parser.parse_args()
 
     def main(self):
