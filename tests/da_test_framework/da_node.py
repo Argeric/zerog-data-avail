@@ -38,7 +38,7 @@ class LocalStack(TestNode):
             log,
             None,
         )
-        self.args = ["go run ./deploy/cmd -localstack-port 4566 -deploy-resources true localstack"]
+        self.args = [binary, "-localstack-port 4566 -deploy-resources true localstack"]
 
     def start(self):
         self.log.info("Start local stack")
@@ -67,8 +67,7 @@ class DAEncoder(TestNode):
             log,
             None,
         )
-        self.args = ["go run ./disperser/cmd/encoder \
-        --disperser-encoder.grpc-port 34000 \
+        self.args = [binary, "--disperser-encoder.grpc-port 34000 \
         --disperser-encoder.metrics-http-port 9109 \
         --kzg.g1-path ../inabox/resources/kzg/g1.point.300000 \
         --kzg.g2-path ../inabox/resources/kzg/g2.point.300000 \
@@ -110,8 +109,7 @@ class DABatcher(TestNode):
             log,
             None,
         )
-        self.args = [f"go run ./disperser/cmd/batcher \
-        --batcher.pull-interval 10s \
+        self.args = [binary, f"--batcher.pull-interval 10s \
         --chain.rpc {local_conf['blockchain_rpc_endpoint']} \
         --chain.private-key {GENESIS_PRIV_KEY} \
         --batcher.finalizer-interval 20s \
@@ -160,8 +158,7 @@ class DAServer(TestNode):
             log,
             None,
         )
-        self.args = ["go run ./disperser/cmd/apiserver \
-        --disperser-server.grpc-port 51001 \
+        self.args = [binary, "--disperser-server.grpc-port 51001 \
         --disperser-server.s3-bucket-name test-zgda-blobstore \
         --disperser-server.dynamodb-table-name test-BlobMetadata \
         --disperser-server.aws.region us-east-1 \
