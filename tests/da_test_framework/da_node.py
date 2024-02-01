@@ -28,6 +28,7 @@ class LocalStack(TestNode):
         # Overwrite with personalized configs.
         local_conf.update(updated_config)
         data_dir = os.path.join(root_dir, "localstack")
+        #rpc_url = "http://" + local_conf["rpc_listen_address"]
         super().__init__(
             DANodeType.DA_LOCAL_STACK,
             0,
@@ -44,6 +45,15 @@ class LocalStack(TestNode):
         self.log.info("Start localstack")
         super().start()
 
+    def wait_for_rpc_connection(self):
+        #self._wait_for_rpc_connection(lambda rpc: rpc.zgs_getStatus() is not None)
+        print("Localstack wait_for_rpc_connection need to implement")
+
+
+    def stop(self):
+        self.log.info("Stop localstack")
+        super().stop()
+
 class DAEncoder(TestNode):
     def __init__(
             self,
@@ -57,6 +67,7 @@ class DAEncoder(TestNode):
         # Overwrite with personalized configs.
         local_conf.update(updated_config)
         data_dir = os.path.join(root_dir, "da_encoder")
+        #rpc_url = "http://" + local_conf["rpc_listen_address"]
         super().__init__(
             DANodeType.DA_ENCODER,
             0,
@@ -81,6 +92,14 @@ class DAEncoder(TestNode):
         self.log.info("Start DA encoder")
         super().start()
 
+    def wait_for_rpc_connection(self):
+        #self._wait_for_rpc_connection(lambda rpc: rpc.zgs_getStatus() is not None)
+        print("DA encoder wait_for_rpc_connection need to implement")
+
+    def stop(self):
+        self.log.info("Stop DA encoder")
+        super().stop()
+
 class DABatcher(TestNode):
     def __init__(
             self,
@@ -99,6 +118,7 @@ class DABatcher(TestNode):
         # Overwrite with personalized configs.
         local_conf.update(updated_config)
         data_dir = os.path.join(root_dir, "da_batcher")
+        #rpc_url = "http://" + local_conf["rpc_listen_address"]
         super().__init__(
             DANodeType.DA_BATCHER,
             0,
@@ -135,6 +155,14 @@ class DABatcher(TestNode):
         self.log.info("Start DA batcher")
         super().start()
 
+    def wait_for_rpc_connection(self):
+        #self._wait_for_rpc_connection(lambda rpc: rpc.zgs_getStatus() is not None)
+        print("DA batcher wait_for_rpc_connection need to implement")
+
+    def stop(self):
+        self.log.info("Stop DA batcher")
+        super().stop()
+
 class DAServer(TestNode):
     def __init__(
             self,
@@ -148,6 +176,7 @@ class DAServer(TestNode):
         # Overwrite with personalized configs.
         local_conf.update(updated_config)
         data_dir = os.path.join(root_dir, "da_server")
+        #rpc_url = "http://" + local_conf["rpc_listen_address"]
         super().__init__(
             DANodeType.DA_SERVER,
             0,
@@ -169,3 +198,11 @@ class DAServer(TestNode):
     def start(self):
         self.log.info("Start DA server")
         super().start()
+
+    def wait_for_rpc_connection(self):
+        #self._wait_for_rpc_connection(lambda rpc: rpc.zgs_getStatus() is not None)
+        print("DA server wait_for_rpc_connection need to implement")
+
+    def stop(self):
+        self.log.info("Stop DA server")
+        super().stop()
