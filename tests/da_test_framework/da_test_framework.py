@@ -34,7 +34,7 @@ class DATestFramework(TestFramework):
         self.__default_da_server_binary__ = os.path.join(
             tests_dir, "tmp", "da_server" + binary_ext
         )
-        super().__init__(blockchain_node_type, blockchain_node_configs)
+        super(DATestFramework, self).__init__(blockchain_node_type, blockchain_node_configs)
 
     def setup_nodes(self):
         super().setup_nodes()
