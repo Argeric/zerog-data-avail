@@ -30,6 +30,7 @@ class DATestFramework(TestFramework):
         self.da_batcher_binary = None
         self.da_server_binary = None
         self.stream_ids = None
+        self.da_services = []
         binary_ext = ".exe" if is_windows_platform() else ""
         tests_dir = os.path.dirname(__file_path__)
         self.__default_localstack_binary__ = os.path.join(
