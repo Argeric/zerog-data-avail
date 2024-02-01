@@ -83,7 +83,8 @@ class DATestFramework(TestFramework):
         da_server.start()
         self.log.info("All DA service started")
 
-    def __da_parse_arguments(self):
+    def __parse_arguments(self):
+        super().__parse_arguments()
         parser = argparse.ArgumentParser(usage="%(prog)s [options]")
 
         parser.add_argument(
@@ -115,9 +116,8 @@ class DATestFramework(TestFramework):
         )
 
         self.da_options = parser.parse_args()
+        print("parse_args in derived ======" + str(self.da_options))
 
-    def main(self):
-        self.__da_parse_arguments()
         self.localstack_binary = self.da_options.localstack
         self.da_encoder_binary = self.da_options.da_encoder
         self.da_batcher_binary = self.da_options.da_batcher
@@ -134,4 +134,3 @@ class DATestFramework(TestFramework):
         assert os.path.exists(self.da_server_binary), (
                 "da server binary not found: %s" % self.da_server_binary
         )
-        super().main()
