@@ -115,7 +115,6 @@ class DATestFramework(TestFramework):
         )
 
         self.da_options = parser.parse_args()
-        print("da_options =================================== " + str(self.da_options))
 
     def main(self):
         self.__da_parse_arguments()
