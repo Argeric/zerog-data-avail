@@ -13,6 +13,11 @@ from da_test_framework.da_node import LocalStack, DAEncoder, DABatcher, DAServer
 __file_path__ = os.path.dirname(os.path.realpath(__file__))
 
 
+# go build -o ./tests/tmp/localstack ./inabox/deploy/cmd
+# go build -o ./tests/tmp/da_encoder ./disperser/cmd/encoder
+# go build -o ./tests/tmp/da_batcher ./disperser/cmd/batcher
+# go build -o ./tests/tmp/da_server ./disperser/cmd/apiserver
+
 class DATestFramework(TestFramework):
 
     def __init__(
@@ -20,10 +25,10 @@ class DATestFramework(TestFramework):
             blockchain_node_type=BlockChainNodeType.Conflux,
             blockchain_node_configs={},
     ):
-        self.da_server_binary = None
-        self.da_batcher_binary = None
-        self.da_encoder_binary = None
         self.localstack_binary = None
+        self.da_encoder_binary = None
+        self.da_batcher_binary = None
+        self.da_server_binary = None
         self.stream_ids = None
         binary_ext = ".exe" if is_windows_platform() else ""
         tests_dir = os.path.dirname(__file_path__)
