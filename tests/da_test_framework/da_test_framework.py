@@ -5,6 +5,7 @@ import argparse
 sys.path.append("../../zerog_storage_kv/tests")
 
 from test_framework.test_framework import TestFramework
+from test_framework.blockchain_node import BlockChainNodeType
 from utility.kv import MAX_STREAM_ID, to_stream_id
 from utility.utils import is_windows_platform
 from da_test_framework.da_node import LocalStack, DAEncoder, DABatcher, DAServer
@@ -14,7 +15,11 @@ __file_path__ = os.path.dirname(os.path.realpath(__file__))
 
 class DATestFramework(TestFramework):
 
-    def __init__(self):
+    def __init__(
+            self,
+            blockchain_node_type=BlockChainNodeType.Conflux,
+            blockchain_node_configs={},
+    ):
         binary_ext = ".exe" if is_windows_platform() else ""
         tests_dir = os.path.dirname(__file_path__)
         self.__default_localstack_binary__ = os.path.join(
@@ -29,6 +34,7 @@ class DATestFramework(TestFramework):
         self.__default_da_server_binary__ = os.path.join(
             tests_dir, "tmp", "da_server" + binary_ext
         )
+        super(DATestFramework, self).__init__()
 
     def setup_nodes(self):
         super().setup_nodes()
