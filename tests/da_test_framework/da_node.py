@@ -17,10 +17,11 @@ class DANodeType(Enum):
 
 class LocalStack(TestNode):
     def __init__(
-        self,
-        root_dir,
-        updated_config,
-        log,
+            self,
+            root_dir,
+            binary,
+            updated_config,
+            log,
     ):
         local_conf = dict(log_config_file="log_config")
 
@@ -32,7 +33,7 @@ class LocalStack(TestNode):
             0,
             data_dir,
             None,
-            None,
+            binary,
             local_conf,
             log,
             None,
@@ -47,6 +48,7 @@ class DAEncoder(TestNode):
     def __init__(
             self,
             root_dir,
+            binary,
             updated_config,
             log,
     ):
@@ -60,7 +62,7 @@ class DAEncoder(TestNode):
             0,
             data_dir,
             None,
-            None,
+            binary,
             local_conf,
             log,
             None,
@@ -84,6 +86,7 @@ class DABatcher(TestNode):
     def __init__(
             self,
             root_dir,
+            binary,
             updated_config,
             log_contract_address,
             log,
@@ -102,7 +105,7 @@ class DABatcher(TestNode):
             0,
             data_dir,
             None,
-            None,
+            binary,
             local_conf,
             log,
             None,
@@ -138,6 +141,7 @@ class DAServer(TestNode):
     def __init__(
             self,
             root_dir,
+            binary,
             updated_config,
             log,
     ):
@@ -151,7 +155,7 @@ class DAServer(TestNode):
             0,
             data_dir,
             None,
-            None,
+            binary,
             local_conf,
             log,
             None,
