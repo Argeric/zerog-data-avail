@@ -83,8 +83,8 @@ class DATestFramework(TestFramework):
         da_server.start()
         self.log.info("All DA service started")
 
-    def __parse_arguments(self):
-        super().__parse_arguments()
+    def parse_arguments(self):
+        super().parse_arguments()
         parser = argparse.ArgumentParser(usage="%(prog)s [options]")
 
         parser.add_argument(
