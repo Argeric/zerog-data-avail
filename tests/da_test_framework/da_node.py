@@ -113,7 +113,7 @@ class DAEncoder(TestNode):
             print(f"DA encoder =============1111====================== {err}")
             if "no RPC connection" in err:
                 print("DA encoder =============2222====================== no RPC connection")
-                self.log.dubug(f"Stop DA encoder: no RPC connection")
+                self.log.debug(f"Stop DA encoder: no RPC connection")
             else:
                 raise e
 
