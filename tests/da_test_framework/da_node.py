@@ -106,7 +106,7 @@ class DAEncoder(TestNode):
 
     def stop(self):
         self.log.info("Stop DA encoder")
-        super().stop(kill=True)
+        super().stop(kill=True, wait=False)
 
 
 class DABatcher(TestNode):
