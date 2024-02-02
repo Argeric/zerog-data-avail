@@ -43,6 +43,7 @@ class LocalStack(TestNode):
             None,
         )
         self.args = [binary, "-localstack-port 4566 -deploy-resources true localstack"]
+        print(f"localstack =================== {self.args}")
 
     def start(self):
         self.log.info("Start localstack")
@@ -90,6 +91,7 @@ class DAEncoder(TestNode):
         --kzg.num-workers 12 \
         --disperser-encoder.log.level-std trace \
         --disperser-encoder.log.level-file trace"]
+        print(f"DAEncoder =================== {self.args}")
 
     def start(self):
         self.log.info("Start DA encoder")
@@ -154,6 +156,7 @@ class DABatcher(TestNode):
         --batcher.storage.kv-url http://0.0.0.0:7890 \
         --batcher.storage.kv-stream-id 000000000000000000000000000000000000000000000000000000000000f2bd \
         --batcher.storage.flow-contract	{local_conf['log_contract_address']}"]
+        print(f"DABatcher =================== {self.args}")
 
     def start(self):
         self.log.info("Start DA batcher")
@@ -199,6 +202,7 @@ class DAServer(TestNode):
         --disperser-server.aws.access-key-id localstack \
         --disperser-server.aws.secret-access-key localstack \
         --disperser-server.aws.endpoint-url http://0.0.0.0:4566"]
+        print(f"DAServer =================== {self.args}")
 
     def start(self):
         self.log.info("Start DA server")
