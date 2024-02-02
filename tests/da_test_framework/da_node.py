@@ -57,7 +57,8 @@ class LocalStack(TestNode):
 
     def stop(self):
         self.log.info("Stop localstack")
-        super().stop(kill=True)
+        super().stop()
+        os.system("docker stop localstack-test")
 
 
 class DAEncoder(TestNode):
