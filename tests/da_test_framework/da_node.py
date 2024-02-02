@@ -1,13 +1,13 @@
 import os
 import sys
 
-sys.path.append("../../zerog_storage_kv/tests")
-
 from enum import Enum, unique
-
 from test_framework.blockchain_node import TestNode
 from utility.utils import blockchain_rpc_port
 from config.node_config import GENESIS_PRIV_KEY
+
+sys.path.append("../../zerog_storage_kv/tests")
+__file_path__ = os.path.dirname(os.path.realpath(__file__))
 
 
 @unique
@@ -84,6 +84,7 @@ class DAEncoder(TestNode):
             None,
         )
         print(f"root_dir =================== {root_dir}")
+        print(f"__file_path__ =================== {__file_path__}")
         self.args = [binary, "--disperser-encoder.grpc-port", "34000",
                      "--disperser-encoder.metrics-http-port", "9109",
                      "--kzg.g1-path", "../inabox/resources/kzg/g1.point.300000",
