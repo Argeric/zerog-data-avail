@@ -3,6 +3,7 @@
 import os
 import tempfile
 import subprocess
+import time
 
 data_dir = '/mnt/zerog-data-avail/tests/tmp'
 # args = ['/mnt/zerog-data-avail/tests/tmp/localstack', '-localstack-port 4566 -deploy-resources true localstack']
@@ -19,3 +20,5 @@ localstack = subprocess.Popen(
     env=my_env,
 )
 print(f"localstack pid ====== {localstack.pid}")
+
+time.sleep(1000)
