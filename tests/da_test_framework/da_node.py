@@ -1,5 +1,6 @@
 import os
 import sys
+
 sys.path.append("../../zerog_storage_kv/tests")
 
 from enum import Enum, unique
@@ -8,12 +9,14 @@ from test_framework.blockchain_node import TestNode
 from utility.utils import blockchain_rpc_port
 from config.node_config import GENESIS_PRIV_KEY
 
+
 @unique
 class DANodeType(Enum):
     DA_LOCAL_STACK = 3
     DA_ENCODER = 4
     DA_BATCHER = 5
     DA_SERVER = 6
+
 
 class LocalStack(TestNode):
     def __init__(
@@ -28,7 +31,7 @@ class LocalStack(TestNode):
         # Overwrite with personalized configs.
         local_conf.update(updated_config)
         data_dir = os.path.join(root_dir, "localstack")
-        #rpc_url = "http://" + local_conf["rpc_listen_address"]
+        # rpc_url = "http://" + local_conf["rpc_listen_address"]
         super().__init__(
             DANodeType.DA_LOCAL_STACK,
             0,
@@ -46,13 +49,13 @@ class LocalStack(TestNode):
         super().start()
 
     def wait_for_rpc_connection(self):
-        #self._wait_for_rpc_connection(lambda rpc: rpc.zgs_getStatus() is not None)
+        # self._wait_for_rpc_connection(lambda rpc: rpc.zgs_getStatus() is not None)
         print("Localstack wait_for_rpc_connection need to implement")
-
 
     def stop(self):
         self.log.info("Stop localstack")
-        super().stop()
+        super().stop(kill=True)
+
 
 class DAEncoder(TestNode):
     def __init__(
@@ -67,7 +70,7 @@ class DAEncoder(TestNode):
         # Overwrite with personalized configs.
         local_conf.update(updated_config)
         data_dir = os.path.join(root_dir, "da_encoder")
-        #rpc_url = "http://" + local_conf["rpc_listen_address"]
+        # rpc_url = "http://" + local_conf["rpc_listen_address"]
         super().__init__(
             DANodeType.DA_ENCODER,
             0,
@@ -93,12 +96,13 @@ class DAEncoder(TestNode):
         super().start()
 
     def wait_for_rpc_connection(self):
-        #self._wait_for_rpc_connection(lambda rpc: rpc.zgs_getStatus() is not None)
+        # self._wait_for_rpc_connection(lambda rpc: rpc.zgs_getStatus() is not None)
         print("DA encoder wait_for_rpc_connection need to implement")
 
     def stop(self):
         self.log.info("Stop DA encoder")
-        super().stop()
+        super().stop(kill=True)
+
 
 class DABatcher(TestNode):
     def __init__(
@@ -118,7 +122,7 @@ class DABatcher(TestNode):
         # Overwrite with personalized configs.
         local_conf.update(updated_config)
         data_dir = os.path.join(root_dir, "da_batcher")
-        #rpc_url = "http://" + local_conf["rpc_listen_address"]
+        # rpc_url = "http://" + local_conf["rpc_listen_address"]
         super().__init__(
             DANodeType.DA_BATCHER,
             0,
@@ -156,12 +160,13 @@ class DABatcher(TestNode):
         super().start()
 
     def wait_for_rpc_connection(self):
-        #self._wait_for_rpc_connection(lambda rpc: rpc.zgs_getStatus() is not None)
+        # self._wait_for_rpc_connection(lambda rpc: rpc.zgs_getStatus() is not None)
         print("DA batcher wait_for_rpc_connection need to implement")
 
     def stop(self):
         self.log.info("Stop DA batcher")
-        super().stop()
+        super().stop(kill=True)
+
 
 class DAServer(TestNode):
     def __init__(
@@ -176,7 +181,7 @@ class DAServer(TestNode):
         # Overwrite with personalized configs.
         local_conf.update(updated_config)
         data_dir = os.path.join(root_dir, "da_server")
-        #rpc_url = "http://" + local_conf["rpc_listen_address"]
+        # rpc_url = "http://" + local_conf["rpc_listen_address"]
         super().__init__(
             DANodeType.DA_SERVER,
             0,
@@ -200,9 +205,9 @@ class DAServer(TestNode):
         super().start()
 
     def wait_for_rpc_connection(self):
-        #self._wait_for_rpc_connection(lambda rpc: rpc.zgs_getStatus() is not None)
+        # self._wait_for_rpc_connection(lambda rpc: rpc.zgs_getStatus() is not None)
         print("DA server wait_for_rpc_connection need to implement")
 
     def stop(self):
         self.log.info("Stop DA server")
-        super().stop()
+        super().stop(kill=True)
