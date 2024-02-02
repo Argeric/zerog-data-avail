@@ -208,13 +208,13 @@ class DAServer(TestNode):
             log,
             None,
         )
-        self.args = [binary, "--disperser-server.grpc-port 51001 \
-        --disperser-server.s3-bucket-name test-zgda-blobstore \
-        --disperser-server.dynamodb-table-name test-BlobMetadata \
-        --disperser-server.aws.region us-east-1 \
-        --disperser-server.aws.access-key-id localstack \
-        --disperser-server.aws.secret-access-key localstack \
-        --disperser-server.aws.endpoint-url http://0.0.0.0:4566"]
+        self.args = [binary, "--disperser-server.grpc-port", "51001",
+                     "--disperser-server.s3-bucket-name", "test-zgda-blobstore",
+                     "--disperser-server.dynamodb-table-name", "test-BlobMetadata",
+                     "--disperser-server.aws.region", "us-east-1",
+                     "--disperser-server.aws.access-key-id", "localstack",
+                     "--disperser-server.aws.secret-access-key", "localstack",
+                     "--disperser-server.aws.endpoint-url", "http://0.0.0.0:4566"]
         print(f"DAServer =================== {self.args}")
 
     def start(self):
