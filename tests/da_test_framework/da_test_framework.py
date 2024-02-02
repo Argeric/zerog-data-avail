@@ -60,6 +60,7 @@ class DATestFramework(TestFramework):
         # super().stop_nodes()
         # for service in self.da_services:
         #     service.stop()
+        print("stop_nodes need to implement")
 
     def setup_da_node(self, updated_config={}):
         self.log.info("Start deploy DA services")
