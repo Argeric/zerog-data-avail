@@ -23,7 +23,7 @@ class DAHelloTest(DATestFramework):
 
     def run_test(self):
         print("hello")
-        time.sleep(30)
+        time.sleep(300)
 
 
 if __name__ == "__main__":
