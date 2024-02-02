@@ -78,13 +78,13 @@ class DATestFramework(TestFramework):
         time.sleep(1)
         da_encoder.wait_for_rpc_connection()
 
-        # da_batcher = DABatcher(self.root_dir, self.da_batcher_binary, updated_config, self.contract.address(), self.log)
-        # self.da_services.append(da_batcher)
-        # da_batcher.setup_config()
-        # da_batcher.start()
-        # time.sleep(1)
-        # da_batcher.wait_for_rpc_connection()
-        #
+        da_batcher = DABatcher(self.root_dir, self.da_batcher_binary, updated_config, self.contract.address(), self.log)
+        self.da_services.append(da_batcher)
+        da_batcher.setup_config()
+        da_batcher.start()
+        time.sleep(1)
+        da_batcher.wait_for_rpc_connection()
+
         # da_server = DAServer(self.root_dir, self.da_server_binary, updated_config, self.log)
         # self.da_services.append(da_server)
         # da_server.setup_config()

@@ -147,27 +147,28 @@ class DABatcher(TestNode):
             log,
             None,
         )
-        self.args = [binary, f"--batcher.pull-interval 10s \
-        --chain.rpc {local_conf['blockchain_rpc_endpoint']} \
-        --chain.private-key {GENESIS_PRIV_KEY} \
-        --batcher.finalizer-interval 20s \
-        --batcher.aws.region us-east-1 \
-        --batcher.aws.access-key-id localstack \
-        --batcher.aws.secret-access-key localstack \
-        --batcher.aws.endpoint-url http://0.0.0.0:4566 \
-        --batcher.s3-bucket-name test-zgda-blobstore \
-        --batcher.dynamodb-table-name test-BlobMetadata \
-        --encoder-socket 0.0.0.0:34000 \
-        --batcher.batch-size-limit 10000 \
-        --batcher.srs-order 300000 \
-        --encoding-timeout 10s \
-        --chain-read-timeout 12s \
-        --chain-write-timeout 13s \
-        --batcher.storage.node-url http://0.0.0.0:5678 \
-        --batcher.storage.node-url http://0.0.0.0:6789 \
-        --batcher.storage.kv-url http://0.0.0.0:7890 \
-        --batcher.storage.kv-stream-id 000000000000000000000000000000000000000000000000000000000000f2bd \
-        --batcher.storage.flow-contract	{local_conf['log_contract_address']}"]
+        self.args = [binary, "--batcher.pull-interval", "10s",
+                     "--chain.rpc", local_conf['blockchain_rpc_endpoint'],
+                     "--chain.private-key", GENESIS_PRIV_KEY,
+                     "--batcher.finalizer-interval", "20s",
+                     "--batcher.aws.region", "us-east-1",
+                     "--batcher.aws.access-key-id", "localstack",
+                     "--batcher.aws.secret-access-key", "localstack",
+                     "--batcher.aws.endpoint-url", "http://0.0.0.0:4566",
+                     "--batcher.s3-bucket-name", "test-zgda-blobstore",
+                     "--batcher.dynamodb-table-name", "test-BlobMetadata",
+                     "--encoder-socket", "0.0.0.0:34000",
+                     "--batcher.batch-size-limit", "10000",
+                     "--batcher.srs-order", "300000",
+                     "--encoding-timeout", "10s",
+                     "--chain-read-timeout", "12s",
+                     "--chain-write-timeout", "13s",
+                     "--batcher.storage.node-url", "http://0.0.0.0:5678",
+                     "--batcher.storage.node-url", "http://0.0.0.0:6789",
+                     "--batcher.storage.kv-url", "http://0.0.0.0:7890",
+                     "--batcher.storage.kv-stream-id",
+                     "000000000000000000000000000000000000000000000000000000000000f2bd",
+                     "--batcher.storage.flow-contract", local_conf['log_contract_address']]
         print(f"DABatcher =================== {self.args}")
 
     def start(self):
