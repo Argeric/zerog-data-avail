@@ -20,5 +20,7 @@ localstack = subprocess.Popen(
     env=my_env,
 )
 print(f"localstack pid ====== {localstack.pid}")
+print(f"localstack return code ====== {localstack.returncode}")
+print(f"localstack errors ====== {localstack.errors}")
 
 time.sleep(1000)
