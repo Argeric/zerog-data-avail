@@ -57,10 +57,10 @@ class DATestFramework(TestFramework):
         self.setup_da_node()
 
     def stop_nodes(self):
-        super().stop_nodes()
+        print("stop_nodes need to implement")
         for service in self.da_services:
             service.stop()
-        print("stop_nodes need to implement")
+        super().stop_nodes()
 
     def setup_da_node(self, updated_config={}):
         self.log.info("Start deploy DA services")
@@ -71,13 +71,13 @@ class DATestFramework(TestFramework):
         time.sleep(1)
         local_stack.wait_for_rpc_connection()
 
-        # da_encoder = DAEncoder(self.root_dir, self.da_encoder_binary, updated_config, self.log)
-        # self.da_services.append(da_encoder)
-        # da_encoder.setup_config()
-        # da_encoder.start()
-        # time.sleep(1)
-        # da_encoder.wait_for_rpc_connection()
-        #
+        da_encoder = DAEncoder(self.root_dir, self.da_encoder_binary, updated_config, self.log)
+        self.da_services.append(da_encoder)
+        da_encoder.setup_config()
+        da_encoder.start()
+        time.sleep(1)
+        da_encoder.wait_for_rpc_connection()
+
         # da_batcher = DABatcher(self.root_dir, self.da_batcher_binary, updated_config, self.contract.address(), self.log)
         # self.da_services.append(da_batcher)
         # da_batcher.setup_config()
