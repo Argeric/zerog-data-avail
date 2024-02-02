@@ -43,7 +43,7 @@ class LocalStack(TestNode):
             None,
         )
         print(f"localstack binary =================== {binary}")
-        self.args = [binary, "--localstack-port", "4566", "--deploy-resources",  "true",  "localstack"]
+        self.args = [binary, "--localstack-port", "4566", "--deploy-resources", "true", "localstack"]
         print(f"localstack =================== {self.args}")
 
     def start(self):
@@ -83,15 +83,15 @@ class DAEncoder(TestNode):
             log,
             None,
         )
-        self.args = [binary, "--disperser-encoder.grpc-port 34000 \
-        --disperser-encoder.metrics-http-port 9109 \
-        --kzg.g1-path ../inabox/resources/kzg/g1.point.300000 \
-        --kzg.g2-path ../inabox/resources/kzg/g2.point.300000 \
-        --kzg.cache-path ../inabox/resources/kzg/SRSTables \
-        --kzg.srs-order 300000 \
-        --kzg.num-workers 12 \
-        --disperser-encoder.log.level-std trace \
-        --disperser-encoder.log.level-file trace"]
+        self.args = [binary, "--disperser-encoder.grpc-port", "34000",
+                     "--disperser-encoder.metrics-http-port", "9109",
+                     "--kzg.g1-path", "../../inabox/resources/kzg/g1.point.300000",
+                     "--kzg.g2-path", "../../inabox/resources/kzg/g2.point.300000",
+                     "--kzg.cache-path", "../../inabox/resources/kzg/SRSTables",
+                     "--kzg.srs-order", "300000",
+                     "--kzg.num-workers", "12",
+                     "--disperser-encoder.log.level-std", "trace",
+                     "--disperser-encoder.log.level-file", "trace"]
         print(f"DAEncoder =================== {self.args}")
 
     def start(self):
