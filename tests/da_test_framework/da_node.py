@@ -42,7 +42,7 @@ class LocalStack(TestNode):
             log,
             None,
         )
-        self.args = [binary, "--localstack-port 4566 --deploy-resources true localstack"]
+        self.args = [binary, " --localstack-port 4566 --deploy-resources true localstack"]
         print(f"localstack =================== {self.args}")
 
     def start(self):
