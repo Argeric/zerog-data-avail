@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 import sys
 sys.path.append("../zerog_storage_kv/tests")
+import time
 
 from da_test_framework.da_test_framework import DATestFramework
+
 
 class DAHelloTest(DATestFramework):
     def setup_params(self):
@@ -19,9 +21,10 @@ class DAHelloTest(DATestFramework):
         print("mine contract path:", self.mine_contract_path)
         print("===============================================")
 
-
     def run_test(self):
         print("hello")
+        time.sleep(100)
+
 
 if __name__ == "__main__":
     DAHelloTest(blockchain_node_configs=dict(
