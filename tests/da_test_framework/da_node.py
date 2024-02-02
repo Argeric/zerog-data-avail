@@ -83,6 +83,7 @@ class DAEncoder(TestNode):
             log,
             None,
         )
+        print(f"root_dir =================== {root_dir}")
         self.args = [binary, "--disperser-encoder.grpc-port", "34000",
                      "--disperser-encoder.metrics-http-port", "9109",
                      "--kzg.g1-path", "../inabox/resources/kzg/g1.point.300000",
