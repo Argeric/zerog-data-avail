@@ -79,7 +79,7 @@ class DATestFramework(TestFramework):
             service.setup_config()
             service.start()
             time.sleep(1)
-            service.wait_for_rpc_conetciont()
+            service.wait_for_rpc_connection()
 
         # local_stack = LocalStack(self.root_dir, self.localstack_binary, updated_config, self.log)
         # self.da_services.append(local_stack)
