@@ -112,11 +112,11 @@ class DATestFramework(TestFramework):
         # da_server.wait_for_rpc_connection()
         self.log.info("All DA service started")
 
-    def setup_da_node(self, clazz, binary, updated_config={}):
-        if clazz == DABatcher:
-            srv = clazz.__init__(self.root_dir, binary, updated_config, self.contract.address(), self.log)
+    def setup_da_node(self, Clazz, binary, updated_config={}):
+        if Clazz == DABatcher:
+            srv = Clazz(self.root_dir, binary, updated_config, self.contract.address(), self.log)
         else:
-            srv = clazz.__init__(self.root_dir, binary, updated_config, self.log)
+            srv = Clazz(self.root_dir, binary, updated_config, self.log)
         self.da_services.append(srv)
         srv.setup_config()
         srv.start()
