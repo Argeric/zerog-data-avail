@@ -28,7 +28,6 @@ class LocalStack(TestNode):
     ):
         local_conf = dict(log_config_file="log_config")
 
-        # Overwrite with personalized configs.
         local_conf.update(updated_config)
         data_dir = os.path.join(root_dir, "localstack")
         # rpc_url = "http://" + local_conf["rpc_listen_address"]
@@ -42,16 +41,13 @@ class LocalStack(TestNode):
             log,
             None,
         )
-        # print(f"localstack binary =================== {binary}")
         self.args = [binary, "--localstack-port", "4566", "--deploy-resources", "true", "localstack"]
-        # print(f"localstack =================== {self.args}")
 
     def start(self):
         self.log.info("Start localstack")
         super().start()
 
     def wait_for_rpc_connection(self):
-        # self._wait_for_rpc_connection(lambda rpc: rpc.zgs_getStatus() is not None)
         self.log.info("Localstack wait_for_rpc_connection need to implement")
 
     def stop(self):
@@ -69,7 +65,6 @@ class DAEncoder(TestNode):
     ):
         local_conf = dict(log_config_file="log_config")
 
-        # Overwrite with personalized configs.
         local_conf.update(updated_config)
         data_dir = os.path.join(root_dir, "da_encoder")
         # rpc_url = "http://" + local_conf["rpc_listen_address"]
@@ -83,8 +78,6 @@ class DAEncoder(TestNode):
             log,
             None,
         )
-        # print(f"root_dir =================== {root_dir}")
-        # print(f"__file_path__ =================== {__file_path__}")
         self.args = [binary, "--disperser-encoder.grpc-port", "34000",
                      "--disperser-encoder.metrics-http-port", "9109",
                      "--kzg.g1-path", f"{__file_path__}/../../inabox/resources/kzg/g1.point.300000",
@@ -101,7 +94,6 @@ class DAEncoder(TestNode):
         super().start()
 
     def wait_for_rpc_connection(self):
-        # self._wait_for_rpc_connection(lambda rpc: rpc.zgs_getStatus() is not None)
         self.log.info("DA encoder wait_for_rpc_connection need to implement")
 
     def stop(self):
@@ -131,7 +123,6 @@ class DABatcher(TestNode):
             "blockchain_rpc_endpoint": f"http://127.0.0.1:{blockchain_rpc_port(0)}",
         }
 
-        # Overwrite with personalized configs.
         local_conf.update(updated_config)
         data_dir = os.path.join(root_dir, "da_batcher")
         # rpc_url = "http://" + local_conf["rpc_listen_address"]
@@ -174,7 +165,6 @@ class DABatcher(TestNode):
         super().start()
 
     def wait_for_rpc_connection(self):
-        # self._wait_for_rpc_connection(lambda rpc: rpc.zgs_getStatus() is not None)
         self.log.info("DA batcher wait_for_rpc_connection need to implement")
 
     def stop(self):
@@ -199,7 +189,6 @@ class DAServer(TestNode):
     ):
         local_conf = dict(log_config_file="log_config")
 
-        # Overwrite with personalized configs.
         local_conf.update(updated_config)
         data_dir = os.path.join(root_dir, "da_server")
         # rpc_url = "http://" + local_conf["rpc_listen_address"]
@@ -227,8 +216,7 @@ class DAServer(TestNode):
         super().start()
 
     def wait_for_rpc_connection(self):
-        # self._wait_for_rpc_connection(lambda rpc: rpc.zgs_getStatus() is not None)
-        print("DA server wait_for_rpc_connection need to implement")
+        self.log.info("DA server wait_for_rpc_connection need to implement")
 
     def stop(self):
         self.log.info("Stop DA server")
