@@ -59,7 +59,10 @@ class DATestFramework(TestFramework):
         self.setup_da_nodes()
 
     def stop_nodes(self):
-        for service in self.da_services.reverse():
+        # for service in self.da_services:
+        #     service.stop()
+        while self.da_services:
+            service = self.da_services.pop()
             service.stop()
         super().stop_nodes()
 
