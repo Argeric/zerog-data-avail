@@ -113,6 +113,9 @@ class DATestFramework(TestFramework):
         self.log.info("All DA service started")
 
     def setup_da_node(self, Clazz, binary, updated_config={}):
+        print(f"Clazz {Clazz}")
+        print(f"binary {binary}")
+        print(f"self.root_dir {self.root_dir}")
         if Clazz == DABatcher:
             srv = Clazz(self.root_dir, binary, updated_config, self.contract.address(), self.log)
         else:
