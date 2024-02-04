@@ -181,7 +181,16 @@ class DABatcher(TestNode):
 
     def stop(self):
         self.log.info("Stop DA batcher")
-        super().stop(kill=True, wait=False)
+        try:
+            super().stop(kill=True, wait=False)
+        except AssertionError as e:
+            err = repr(e)
+            print(f"DA encoder =============3333====================== {err}")
+            if "no RPC connection" in err:
+                print("DA encoder =============5555====================== no RPC connection")
+                self.log.debug(f"Stop DA encoder: no RPC connection")
+            else:
+                raise e
 
 
 class DAServer(TestNode):
