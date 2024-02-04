@@ -71,7 +71,7 @@ class DATestFramework(TestFramework):
             {'clazz': DAServer, 'bin': self.da_server_binary},
         ]
         for s in services:
-            if s == DAEncoder:
+            if s == DABatcher:
                 service = s['clazz'](self.root_dir, s['bin'], updated_config, self.contract.address(), self.log)
             else:
                 service = s['clazz'](self.root_dir, s['bin'], updated_config, self.log)
