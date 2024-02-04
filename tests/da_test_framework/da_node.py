@@ -48,7 +48,7 @@ class LocalStack(TestNode):
         super().start()
 
     def wait_for_rpc_connection(self):
-        self.log.info("Localstack wait_for_rpc_connection need to implement")
+        None
 
     def stop(self):
         self.log.info("Stop localstack")
@@ -94,7 +94,7 @@ class DAEncoder(TestNode):
         super().start()
 
     def wait_for_rpc_connection(self):
-        self.log.info("DA encoder wait_for_rpc_connection need to implement")
+        None
 
     def stop(self):
         self.log.info("Stop DA encoder")
@@ -165,7 +165,7 @@ class DABatcher(TestNode):
         super().start()
 
     def wait_for_rpc_connection(self):
-        self.log.info("DA batcher wait_for_rpc_connection need to implement")
+        None
 
     def stop(self):
         self.log.info("Stop DA batcher")
@@ -216,7 +216,7 @@ class DAServer(TestNode):
         super().start()
 
     def wait_for_rpc_connection(self):
-        self.log.info("DA server wait_for_rpc_connection need to implement")
+        None
 
     def stop(self):
         self.log.info("Stop DA server")
