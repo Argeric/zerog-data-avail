@@ -65,10 +65,10 @@ class DATestFramework(TestFramework):
 
     def setup_da_nodes(self):
         self.log.info("Start deploy DA services")
-        self.setup_da_node(self, LocalStack, self.localstack_binary)
-        self.setup_da_node(self, DAEncoder, self.da_encoder_binary)
-        self.setup_da_node(self, DABatcher, self.da_batcher_binary)
-        self.setup_da_node(self, DAServer, self.da_server_binary)
+        self.setup_da_node(LocalStack, self.localstack_binary)
+        self.setup_da_node(DAEncoder, self.da_encoder_binary)
+        self.setup_da_node(DABatcher, self.da_batcher_binary)
+        self.setup_da_node(DAServer, self.da_server_binary)
 
         # services = [
         #     {'clazz': LocalStack, 'bin': self.localstack_binary},
@@ -112,14 +112,14 @@ class DATestFramework(TestFramework):
         # da_server.wait_for_rpc_connection()
         self.log.info("All DA service started")
 
-    def setup_da_node(self, Clazz, binary, updated_config={}):
-        print(f"Clazz {Clazz}")
+    def setup_da_node(self, clazz, binary, updated_config={}):
+        print(f"Clazz {clazz}")
         print(f"binary {binary}")
         print(f"self.root_dir {self.root_dir}")
-        if Clazz == DABatcher:
-            srv = Clazz(self.root_dir, binary, updated_config, self.contract.address(), self.log)
+        if clazz == DABatcher:
+            srv = clazz(self.root_dir, binary, updated_config, self.contract.address(), self.log)
         else:
-            srv = Clazz(self.root_dir, binary, updated_config, self.log)
+            srv = clazz(self.root_dir, binary, updated_config, self.log)
         self.da_services.append(srv)
         srv.setup_config()
         srv.start()
