@@ -114,9 +114,9 @@ class DATestFramework(TestFramework):
 
     def setup_da_node(self, clazz, binary, updated_config={}):
         if clazz == DABatcher:
-            srv = clazz(self.root_dir, binary, updated_config, self.contract.address(), self.log)
+            srv = clazz.__init__(self.root_dir, binary, updated_config, self.contract.address(), self.log)
         else:
-            srv = clazz(self.root_dir, binary, updated_config, self.log)
+            srv = clazz.__init__(self.root_dir, binary, updated_config, self.log)
         self.da_services.append(srv)
         srv.setup_config()
         srv.start()
