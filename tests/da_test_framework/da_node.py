@@ -44,7 +44,7 @@ class LocalStack(TestNode):
         )
         # print(f"localstack binary =================== {binary}")
         self.args = [binary, "--localstack-port", "4566", "--deploy-resources", "true", "localstack"]
-        print(f"localstack =================== {self.args}")
+        # print(f"localstack =================== {self.args}")
 
     def start(self):
         self.log.info("Start localstack")
@@ -52,7 +52,7 @@ class LocalStack(TestNode):
 
     def wait_for_rpc_connection(self):
         # self._wait_for_rpc_connection(lambda rpc: rpc.zgs_getStatus() is not None)
-        print("Localstack wait_for_rpc_connection need to implement")
+        self.log.info("Localstack wait_for_rpc_connection need to implement")
 
     def stop(self):
         self.log.info("Stop localstack")
@@ -102,7 +102,7 @@ class DAEncoder(TestNode):
 
     def wait_for_rpc_connection(self):
         # self._wait_for_rpc_connection(lambda rpc: rpc.zgs_getStatus() is not None)
-        print("DA encoder wait_for_rpc_connection need to implement")
+        self.log.info("DA encoder wait_for_rpc_connection need to implement")
 
     def stop(self):
         self.log.info("Stop DA encoder")
@@ -110,9 +110,7 @@ class DAEncoder(TestNode):
             super().stop(kill=True, wait=False)
         except AssertionError as e:
             err = repr(e)
-            # print(f"DA encoder =============1111====================== {err}")
             if "no RPC connection" in err:
-                # print("DA encoder =============2222====================== no RPC connection")
                 self.log.debug(f"Stop DA encoder: no RPC connection")
             else:
                 raise e
@@ -177,7 +175,7 @@ class DABatcher(TestNode):
 
     def wait_for_rpc_connection(self):
         # self._wait_for_rpc_connection(lambda rpc: rpc.zgs_getStatus() is not None)
-        print("DA batcher wait_for_rpc_connection need to implement")
+        self.log.info("DA batcher wait_for_rpc_connection need to implement")
 
     def stop(self):
         self.log.info("Stop DA batcher")
@@ -185,9 +183,7 @@ class DABatcher(TestNode):
             super().stop(kill=True, wait=False)
         except AssertionError as e:
             err = repr(e)
-            # print(f"DA encoder =============3333====================== {err}")
             if "no RPC connection" in err:
-                # print("DA encoder =============5555====================== no RPC connection")
                 self.log.debug(f"Stop DA encoder: no RPC connection")
             else:
                 raise e
