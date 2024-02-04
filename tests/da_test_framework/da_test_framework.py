@@ -63,12 +63,12 @@ class DATestFramework(TestFramework):
             service.stop()
         super().stop_nodes()
 
-    def setup_da_nodes(self, updated_config={}):
+    def setup_da_nodes(self):
         self.log.info("Start deploy DA services")
-        self.__setup_da_node(self, LocalStack, self.localstack_binary)
-        self.__setup_da_node(self, DAEncoder, self.da_encoder_binary)
-        self.__setup_da_node(self, DABatcher, self.da_batcher_binary)
-        self.__setup_da_node(self, DAServer, self.da_server_binary)
+        self.setup_da_node(self, LocalStack, self.localstack_binary)
+        self.setup_da_node(self, DAEncoder, self.da_encoder_binary)
+        self.setup_da_node(self, DABatcher, self.da_batcher_binary)
+        self.setup_da_node(self, DAServer, self.da_server_binary)
 
         # services = [
         #     {'clazz': LocalStack, 'bin': self.localstack_binary},
@@ -112,7 +112,7 @@ class DATestFramework(TestFramework):
         # da_server.wait_for_rpc_connection()
         self.log.info("All DA service started")
 
-    def __setup_da_node(self, clazz, binary, updated_config={}):
+    def setup_da_node(self, clazz, binary, updated_config={}):
         if clazz == DABatcher:
             srv = clazz(self.root_dir, binary, updated_config, self.contract.address(), self.log)
         else:
