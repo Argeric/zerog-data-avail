@@ -70,11 +70,11 @@ class DATestFramework(TestFramework):
             {'clazz': DABatcher, 'bin': self.da_batcher_binary},
             {'clazz': DAServer, 'bin': self.da_server_binary},
         ]
-        for s in services:
-            if s == DABatcher:
-                service = s['clazz'](self.root_dir, s['bin'], updated_config, self.contract.address(), self.log)
+        for srv in services:
+            if srv == DABatcher:
+                service = srv['clazz'](self.root_dir, srv['bin'], updated_config, self.contract.address(), self.log)
             else:
-                service = s['clazz'](self.root_dir, s['bin'], updated_config, self.log)
+                service = srv['clazz'](self.root_dir, srv['bin'], updated_config, self.log)
             self.da_services.append(service)
             service.setup_config()
             service.start()
