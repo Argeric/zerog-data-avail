@@ -72,9 +72,9 @@ class DATestFramework(TestFramework):
         ]
         for s in services:
             if s == DAEncoder:
-                service = s['clazz'](self.root_dir, self.bin, updated_config, self.contract.address(), self.log)
+                service = s['clazz'](self.root_dir, s['bin'], updated_config, self.contract.address(), self.log)
             else:
-                service = s['clazz'](self.root_dir, self.bin, updated_config, self.log)
+                service = s['clazz'](self.root_dir, s['bin'], updated_config, self.log)
             self.da_services.append(service)
             service.setup_config()
             service.start()
