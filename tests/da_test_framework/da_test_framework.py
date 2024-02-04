@@ -63,50 +63,50 @@ class DATestFramework(TestFramework):
 
     def setup_da_node(self, updated_config={}):
         self.log.info("Start deploy DA services")
-        services = [
-            {'clazz': LocalStack, 'bin': self.localstack_binary},
-            {'clazz': DAEncoder, 'bin': self.da_encoder_binary},
-            {'clazz': DABatcher, 'bin': self.da_batcher_binary},
-            {'clazz': DAServer, 'bin': self.da_server_binary},
-        ]
-        for srv in services:
-            if srv == DABatcher:
-                service = srv['clazz'](self.root_dir, srv['bin'], updated_config, self.contract.address(), self.log)
-            else:
-                service = srv['clazz'](self.root_dir, srv['bin'], updated_config, self.log)
-            self.da_services.append(service)
-            service.setup_config()
-            service.start()
-            time.sleep(1)
-            service.wait_for_rpc_connection()
+        # services = [
+        #     {'clazz': LocalStack, 'bin': self.localstack_binary},
+        #     {'clazz': DAEncoder, 'bin': self.da_encoder_binary},
+        #     {'clazz': DABatcher, 'bin': self.da_batcher_binary},
+        #     {'clazz': DAServer, 'bin': self.da_server_binary},
+        # ]
+        # for srv in services:
+        #     if srv == DABatcher:
+        #         service = srv['clazz'](self.root_dir, srv['bin'], updated_config, self.contract.address(), self.log)
+        #     else:
+        #         service = srv['clazz'](self.root_dir, srv['bin'], updated_config, self.log)
+        #     self.da_services.append(service)
+        #     service.setup_config()
+        #     service.start()
+        #     time.sleep(1)
+        #     service.wait_for_rpc_connection()
 
-        # local_stack = LocalStack(self.root_dir, self.localstack_binary, updated_config, self.log)
-        # self.da_services.append(local_stack)
-        # local_stack.setup_config()
-        # local_stack.start()
-        # time.sleep(1)
-        # local_stack.wait_for_rpc_connection()
-        #
-        # da_encoder = DAEncoder(self.root_dir, self.da_encoder_binary, updated_config, self.log)
-        # self.da_services.append(da_encoder)
-        # da_encoder.setup_config()
-        # da_encoder.start()
-        # time.sleep(1)
-        # da_encoder.wait_for_rpc_connection()
-        #
-        # da_batcher = DABatcher(self.root_dir, self.da_batcher_binary, updated_config, self.contract.address(), self.log)
-        # self.da_services.append(da_batcher)
-        # da_batcher.setup_config()
-        # da_batcher.start()
-        # time.sleep(1)
-        # da_batcher.wait_for_rpc_connection()
-        #
-        # da_server = DAServer(self.root_dir, self.da_server_binary, updated_config, self.log)
-        # self.da_services.append(da_server)
-        # da_server.setup_config()
-        # da_server.start()
-        # time.sleep(1)
-        # da_server.wait_for_rpc_connection()
+        local_stack = LocalStack(self.root_dir, self.localstack_binary, updated_config, self.log)
+        self.da_services.append(local_stack)
+        local_stack.setup_config()
+        local_stack.start()
+        time.sleep(1)
+        local_stack.wait_for_rpc_connection()
+
+        da_encoder = DAEncoder(self.root_dir, self.da_encoder_binary, updated_config, self.log)
+        self.da_services.append(da_encoder)
+        da_encoder.setup_config()
+        da_encoder.start()
+        time.sleep(1)
+        da_encoder.wait_for_rpc_connection()
+
+        da_batcher = DABatcher(self.root_dir, self.da_batcher_binary, updated_config, self.contract.address(), self.log)
+        self.da_services.append(da_batcher)
+        da_batcher.setup_config()
+        da_batcher.start()
+        time.sleep(1)
+        da_batcher.wait_for_rpc_connection()
+
+        da_server = DAServer(self.root_dir, self.da_server_binary, updated_config, self.log)
+        self.da_services.append(da_server)
+        da_server.setup_config()
+        da_server.start()
+        time.sleep(1)
+        da_server.wait_for_rpc_connection()
         self.log.info("All DA service started")
 
     def __da_parse_arguments(self):
