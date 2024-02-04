@@ -42,7 +42,7 @@ class LocalStack(TestNode):
             log,
             None,
         )
-        print(f"localstack binary =================== {binary}")
+        # print(f"localstack binary =================== {binary}")
         self.args = [binary, "--localstack-port", "4566", "--deploy-resources", "true", "localstack"]
         print(f"localstack =================== {self.args}")
 
@@ -83,8 +83,8 @@ class DAEncoder(TestNode):
             log,
             None,
         )
-        print(f"root_dir =================== {root_dir}")
-        print(f"__file_path__ =================== {__file_path__}")
+        # print(f"root_dir =================== {root_dir}")
+        # print(f"__file_path__ =================== {__file_path__}")
         self.args = [binary, "--disperser-encoder.grpc-port", "34000",
                      "--disperser-encoder.metrics-http-port", "9109",
                      "--kzg.g1-path", f"{__file_path__}/../../inabox/resources/kzg/g1.point.300000",
@@ -110,9 +110,9 @@ class DAEncoder(TestNode):
             super().stop(kill=True, wait=False)
         except AssertionError as e:
             err = repr(e)
-            print(f"DA encoder =============1111====================== {err}")
+            # print(f"DA encoder =============1111====================== {err}")
             if "no RPC connection" in err:
-                print("DA encoder =============2222====================== no RPC connection")
+                # print("DA encoder =============2222====================== no RPC connection")
                 self.log.debug(f"Stop DA encoder: no RPC connection")
             else:
                 raise e
@@ -185,9 +185,9 @@ class DABatcher(TestNode):
             super().stop(kill=True, wait=False)
         except AssertionError as e:
             err = repr(e)
-            print(f"DA encoder =============3333====================== {err}")
+            # print(f"DA encoder =============3333====================== {err}")
             if "no RPC connection" in err:
-                print("DA encoder =============5555====================== no RPC connection")
+                # print("DA encoder =============5555====================== no RPC connection")
                 self.log.debug(f"Stop DA encoder: no RPC connection")
             else:
                 raise e

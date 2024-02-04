@@ -57,7 +57,7 @@ class DATestFramework(TestFramework):
         self.setup_da_node()
 
     def stop_nodes(self):
-        print("stop_nodes need to implement")
+        # print("stop_nodes need to implement")
         for service in self.da_services:
             service.stop()
         super().stop_nodes()
