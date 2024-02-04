@@ -19,10 +19,14 @@ class DAHelloTest(DATestFramework):
         print("contract path:", self.contract_path)
         print("token contract path:", self.token_contract_path)
         print("mine contract path:", self.mine_contract_path)
+        print("localstack binary:", self.localstack_binary)
+        print("da encoder binary:", self.da_encoder_binary)
+        print("da batcher binary:", self.da_batcher_binary)
+        print("da server binary:", self.da_server_binary)
         print("===============================================")
 
     def run_test(self):
-        print("hello")
+        self.log.info("hello")
         time.sleep(30)
 
 
