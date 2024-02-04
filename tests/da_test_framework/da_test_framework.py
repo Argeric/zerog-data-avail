@@ -85,12 +85,12 @@ class DATestFramework(TestFramework):
         time.sleep(1)
         da_batcher.wait_for_rpc_connection()
 
-        # da_server = DAServer(self.root_dir, self.da_server_binary, updated_config, self.log)
-        # self.da_services.append(da_server)
-        # da_server.setup_config()
-        # da_server.start()
-        # time.sleep(1)
-        # da_server.wait_for_rpc_connection()
+        da_server = DAServer(self.root_dir, self.da_server_binary, updated_config, self.log)
+        self.da_services.append(da_server)
+        da_server.setup_config()
+        da_server.start()
+        time.sleep(1)
+        da_server.wait_for_rpc_connection()
         self.log.info("All DA service started")
 
     def __da_parse_arguments(self):

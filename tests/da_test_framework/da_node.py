@@ -236,4 +236,4 @@ class DAServer(TestNode):
 
     def stop(self):
         self.log.info("Stop DA server")
-        super().stop(kill=True)
+        super().stop(kill=True, wait=False)
